@@ -60,9 +60,11 @@ function getMovieInfo(movieName){
 
 async function printMovieInfo(movieName){
     try{
-        let id = await getId(id)
-        let title = await getTitle(movieName)
-        let director = await getDirector
+        let movie = await getMovieInfo(movieName);
+        console.log(`${movieName} directed by ${movie.director}. ${movie.description} that runs for ${movie.runtime}.`)
+    }
+    catch(error){
+        console.warn(error);
     }
 };
 
