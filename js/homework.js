@@ -8,10 +8,10 @@ console.log('This is the homework');
 // the below code works as intended
 
 function createAdder(x){
-    function addEight(y){
+    function add(y){
         return x + y
     }
-    return addEight;
+    return add;
 };
 
 const addEight = createAdder(8);
@@ -21,12 +21,12 @@ console.log(addEight(50)); // 58
 console.log(addEight(100)); // 108
 console.log(addEight(92)); // 100
 
-function createAdder(x){
-    function addThree(y){
-        return x + y
-    }
-    return addThree;
-}
+// function createAdder(x){
+//     function addThree(y){
+//         return x + y
+//     }
+//     return addThree;
+// }
 
 const addThree = createAdder(3);
 console.log(addThree(10)); // 13
@@ -58,10 +58,24 @@ function getMovieInfo(movieName){
     })
 }
 
+
+// option 1
+function printMovieInfo(movieTitle){
+    getMovieInfo(movieTitle)
+        .then(movie => {
+            console.log(`${movie.title} directed by ${movie.director}. A story of ${movie.description} that runs for ${movie.runtime} minutes.`)
+        })
+        .catch(err => {
+            console.warn(err)
+        })
+};
+
+
+// option 2
 async function printMovieInfo(movieName){
     try{
         let movie = await getMovieInfo(movieName);
-        console.log(`${movieName} directed by ${movie.director}. ${movie.description} that runs for ${movie.runtime}.`)
+        console.log(`${movieName} directed by ${movie.director}. A story of ${movie.description} that runs for ${movie.runtime} minutes.`)
     }
     catch(error){
         console.warn(error);
